@@ -1,0 +1,234 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "description": "Demo of palette",
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": 3,
+  "links": [],
+  "panels": [
+    {
+      "aliasColors": {
+        "lsst": "#FF0000",
+        "LSST": "#FF0000",
+        "lz": "#FF2800",
+        "skatelescope.eu": "#FF5100",
+        "dune": "#FF7900",
+        "vo.cta.in2p3.fr": "#FFA100",
+        "virgo": "#FFC900",
+        "ISIS": "#FFF200",
+        "UKI-SOUTHGRID-RALPP": "#FFF200",
+        "Diamond": "#E4FF00",
+        "CLF": "#BCFF00",
+        "ccfe": "#94FF00",
+        "CCFE": "#94FF00",
+        "EUCLID": "#6BFF00",
+        "AENEAS": "#43FF00",
+        "eMERLIN": "#1BFF00",
+        "dirac": "#00FF0D",
+        "jintrac": "#00FF36",
+        "casu": "#00FF5E",
+        "gaia": "#00FF86",
+        "gaia-dev": "#00FF86",
+        "gaia-prod": "#00FF86",
+        "gaia-test": "#00FF86",
+        "vcycle": "#00FFAE",
+        "iris.ac.uk": "#00FFD7",
+        "ral-cloud": "#00FFFF",
+        "UKI-LT2-IC-HEP": "#00D7FF",
+        "UKI-NORTHGRID-MAN-HEP": "#00AEFF",
+        "UK-CAM-CUMULUS": "#0086FF",
+        "RAL-LCG2": "#005EFF",
+        "UKI-LT2-QMUL": "#0036FF",
+        "UKI-NORTHGRID-LIV-HEP": "#000DFF",
+        "UKI-SCOTGRID-ECDF": "#1B00FF",
+        "UKI-SOUTHGRID-OX-HEP": "#4300FF",
+        "UKI-NORTHGRID-SHEF-HEP": "#6B00FF",
+        "UKI-SOUTHGRID-BRIS-HEP": "#9400FF",
+        "UKI-NORTHGRID-LANCS-HEP": "#BC00FF",
+        "UKI-LT2-Brunel": "#E400FF",
+        "UKI-SCOTGRID-GLASGOW": "#FF00F2",
+        "UKI-SOUTHGRID-BHAM-HEP": "#FF00C9",
+        "UKI-SOUTHGRID-CAM-HEP": "#FF00A1",
+        "UKI-LT2-RHUL": "#FF0079",
+        "Allocation": "#FF0051",
+        "Capacity": "#FF0028"
+      },
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "MySQL",
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 12,
+        "w": 23,
+        "x": 0,
+        "y": 0
+      },
+      "hiddenSeries": false,
+      "id": 2,
+      "interval": "24h",
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "maxDataPoints": null,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.7",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": true,
+      "steppedLine": false,
+      "targets": [
+        {
+          "format": "time_series",
+          "group": [
+            {
+              "params": [
+                "$__interval",
+                "none"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "timestamp"
+              ],
+              "type": "column"
+            }
+          ],
+          "metricColumn": "site",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  $__timeGroupAlias(timestamp,$__interval),\n  site AS metric,\n  avg(cores)\nFROM ColourTest\nWHERE\n  $__timeFilter(timestamp)\nGROUP BY 1, timestamp,2\nORDER BY $__timeGroup(timestamp,$__interval)",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "cores"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              }
+            ]
+          ],
+          "table": "ColourTest",
+          "timeColumn": "timestamp",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "thresholds": [
+        {
+          "$$hashKey": "object:742",
+          "colorMode": "critical",
+          "fill": true,
+          "line": true,
+          "op": "gt",
+          "yaxis": "left"
+        }
+      ],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Panel Title",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:721",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:722",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    }
+  ],
+  "refresh": false,
+  "schemaVersion": 27,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "2019-03-31T19:45:49.558Z",
+    "to": "2019-04-27T03:03:02.523Z"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Palette Demo",
+  "uid": "oSIm7Rgnz",
+  "version": 2
+}
