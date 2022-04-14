@@ -4,7 +4,7 @@ This repository contains some small tests generating perceptual
 colour palettes for Grafana. These were intended for use in the
 IRIS Accounting Portal. Currently there is a tool compile the 
 Grafana colour mapping config from a set of fixed colours generated
-by some web service. The idea was to automate the web service 
+by some web service. The idea was to automate the palette generator
 with a local script, and to have that script generate more accessible
 colours. 
 
